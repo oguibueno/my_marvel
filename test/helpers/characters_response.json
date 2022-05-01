@@ -1,0 +1,18 @@
+{
+    "data": {
+        "offset": 0,
+        "limit": 10,
+        "total": 100,
+        "count": 10,
+        "results": [
+            {
+                "id": 1,
+                "name": "Guilherme",
+                "description": "Software Engineer",
+                "thumbnail": {
+                    "path": "http://guilherme.jpg"
+                }
+            }
+        ]
+    }
+}
