@@ -28,6 +28,10 @@ void main() {
         name: 'Guilherme',
         description: 'Software Engineer',
         thumbnail: 'http://guilherme.jpg',
+        comics: ['Bueno'],
+        series: ['Bueno'],
+        stories: ['Bueno'],
+        events: ['Bueno'],
       ),
     ],
   );

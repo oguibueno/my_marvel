@@ -3,15 +3,22 @@
 import 'package:flutter/material.dart';
 
 class CharacterStories extends StatelessWidget {
-  const CharacterStories({Key? key}) : super(key: key);
+  const CharacterStories(this.stories);
+
+  final List<String> stories;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
-        color: Colors.green,
-      ),
+    return ListView(
+      children: stories
+          .map(
+            (story) => Card(
+              child: ListTile(
+                title: Text(story),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 }

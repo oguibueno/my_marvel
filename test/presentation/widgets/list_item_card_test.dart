@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:io';
 
@@ -23,6 +23,10 @@ void main() {
               name: 'Guilherme',
               description: 'Software Engineer',
               thumbnail: 'http://guilherme',
+              comics: ['Bueno'],
+              series: ['Bueno'],
+              stories: ['Bueno'],
+              events: ['Bueno'],
             ),
             onTap: () => {},
           ),

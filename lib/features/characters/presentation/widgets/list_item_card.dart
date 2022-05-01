@@ -22,7 +22,7 @@ class ListItemCard extends StatelessWidget {
         onTap: onTap,
         child: Container(
           height: 120,
-          margin: const EdgeInsets.symmetric(
+          margin: EdgeInsets.symmetric(
             horizontal: 5.0,
             vertical: 9.0,
           ),
@@ -46,7 +46,7 @@ class ListItemCard extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: 20.0,
               vertical: 10,
             ),
@@ -80,10 +80,6 @@ class ListItemCard extends StatelessWidget {
                 SizedBox(height: 10),
               ],
             ),
-            // Image.asset(
-            //   "assets/images/${["image"]}",
-            //   height: double.infinity,
-            // )
           ),
         ),
       ),

@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
 import 'package:my_marvel/features/characters/presentation/presentation.dart';
@@ -32,7 +33,12 @@ void main() {
 class App extends MaterialApp {
   App()
       : super(
-          home: CharacterPage(),
+          home: BlocProvider(
+            create: (context) => CharacterBloc(
+              context.read<GetCharacters>(),
+            )..add(CharacterFetched()),
+            child: CharacterPage(),
+          ),
           theme: ThemeData(
             appBarTheme: AppBarTheme(
               color: Colors.grey[900],

@@ -3,15 +3,22 @@
 import 'package:flutter/material.dart';
 
 class CharacterSeries extends StatelessWidget {
-  const CharacterSeries({Key? key}) : super(key: key);
+  const CharacterSeries(this.series);
+
+  final List<String> series;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
-        color: Colors.orangeAccent,
-      ),
+    return ListView(
+      children: series
+          .map(
+            (serie) => Card(
+              child: ListTile(
+                title: Text(serie),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 }

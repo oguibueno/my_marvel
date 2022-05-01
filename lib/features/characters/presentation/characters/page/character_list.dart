@@ -37,7 +37,14 @@ class _CharacterListState extends State<CharacterList>
         switch (state.status) {
           case CharacterStatus.success:
             if (state.characters.isEmpty) {
-              return const Center(child: Text('no characters'));
+              return Center(
+                key: Key('no_characters_to_show'),
+                child: Card(
+                  child: ListTile(
+                    title: Text('no characters to show'),
+                  ),
+                ),
+              );
             }
 
             final itemCount = state.hasReachedMax
@@ -45,6 +52,7 @@ class _CharacterListState extends State<CharacterList>
                 : state.characters.length + 1;
 
             return ListView.builder(
+              key: Key('list_view'),
               itemBuilder: (context, index) {
                 if (index >= state.characters.length) {
                   return BottomLoader();
@@ -64,9 +72,16 @@ class _CharacterListState extends State<CharacterList>
               controller: _scrollController,
             );
           case CharacterStatus.failure:
-            return const Center(child: Text('failed to fetch characters'));
+            return Center(
+              key: Key('failed_to_fetch_characters'),
+              child: Card(
+                child: ListTile(
+                  title: Text('failed to fetch characters'),
+                ),
+              ),
+            );
           default:
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
         }
       },
     );

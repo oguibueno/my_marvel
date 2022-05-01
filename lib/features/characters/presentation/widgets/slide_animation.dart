@@ -23,7 +23,7 @@ class SlideAnimation extends StatefulWidget {
 class _SlideAnimationState extends State<SlideAnimation> {
   @override
   Widget build(BuildContext context) {
-    final _animation = Tween(begin: 0.0, end: 1.0).animate(
+    final animation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: widget.animationController,
         curve: Interval(
@@ -41,11 +41,11 @@ class _SlideAnimationState extends State<SlideAnimation> {
       animation: widget.animationController,
       builder: (context, child) {
         return FadeTransition(
-          opacity: _animation,
+          opacity: animation,
           child: Transform(
             child: widget.child,
             transform: Matrix4.translationValues(
-              500 * (1.0 - _animation.value),
+              500 * (1.0 - animation.value),
               0.0,
               0.0,
             ),

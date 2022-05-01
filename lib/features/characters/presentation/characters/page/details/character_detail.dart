@@ -6,52 +6,32 @@ import 'package:my_marvel/features/characters/presentation/characters/page/page.
 import 'package:my_marvel/features/characters/presentation/widgets/widgets.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class CharacterDetail extends StatefulWidget {
+class CharacterDetail extends StatelessWidget {
   final Character character;
 
   const CharacterDetail({required this.character});
 
   @override
-  State<CharacterDetail> createState() => _CharacterDetailState();
-}
-
-class _CharacterDetailState extends State<CharacterDetail> {
-  final double _initFabHeight = 120.0;
-
-  // ignore: unused_field
-  double _fabHeight = 0;
-  double _panelHeightOpen = 0;
-  final double _panelHeightClosed = 95.0;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _fabHeight = _initFabHeight;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    _panelHeightOpen = MediaQuery.of(context).size.height * .80;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.character.name),
+        title: Text(character.name),
       ),
       body: Material(
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
             SlidingUpPanel(
-              maxHeight: _panelHeightOpen,
-              minHeight: _panelHeightClosed,
+              maxHeight: size.height * .80,
+              minHeight: 320.0,
               parallaxEnabled: true,
               parallaxOffset: .5,
               body: Hero(
                 tag: "pic",
                 child: Image.network(
-                  '${widget.character.thumbnail}/portrait_incredible.jpg',
+                  '${character.thumbnail}/portrait_incredible.jpg',
                   height: size.height * .55,
                   width: size.width,
                   fit: BoxFit.cover,
@@ -59,17 +39,13 @@ class _CharacterDetailState extends State<CharacterDetail> {
               ),
               panelBuilder: (scrollController) => _Content(
                 context: context,
-                widget: widget,
+                character: character,
                 scrollController: scrollController,
               ),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(18.0),
                 topRight: Radius.circular(18.0),
               ),
-              onPanelSlide: (double pos) => setState(() {
-                _fabHeight = pos * (_panelHeightOpen - _panelHeightClosed) +
-                    _initFabHeight;
-              }),
             ),
           ],
         ),
@@ -82,25 +58,24 @@ class _Content extends StatelessWidget {
   const _Content({
     Key? key,
     required this.context,
-    required this.widget,
+    required this.character,
     required this.scrollController,
   }) : super(key: key);
 
   final BuildContext context;
-  final CharacterDetail widget;
+  final Character character;
   final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
     return MediaQuery.removePadding(
+      key: Key('content_slide_panel'),
       context: context,
       removeTop: true,
       child: ListView(
         controller: scrollController,
         children: <Widget>[
-          SizedBox(
-            height: 12.0,
-          ),
+          SizedBox(height: 12.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -116,9 +91,7 @@ class _Content extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 18.0,
-          ),
+          SizedBox(height: 18.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -131,9 +104,7 @@ class _Content extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 36.0,
-          ),
+          SizedBox(height: 36.0),
           Container(
             padding: EdgeInsets.only(left: 24.0, right: 24.0),
             child: Column(
@@ -145,25 +116,21 @@ class _Content extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(
-                  height: 12.0,
-                ),
+                SizedBox(height: 12.0),
                 Text(
-                  widget.character.description,
+                  character.description,
                   softWrap: true,
                 ),
               ],
             ),
           ),
-          SizedBox(
-            height: 24,
-          ),
+          SizedBox(height: 24),
           NestedTabBar(
             {
-              Tab(text: "Comics"): CharacterComics(),
-              Tab(text: "Series"): CharacterSeries(),
-              Tab(text: "Stories"): CharacterStories(),
-              Tab(text: "Events"): CharacterEvents(),
+              Tab(text: "Comics"): CharacterComics(character.comics),
+              Tab(text: "Series"): CharacterSeries(character.series),
+              Tab(text: "Stories"): CharacterStories(character.stories),
+              Tab(text: "Events"): CharacterEvents(character.events),
             },
           ),
         ],

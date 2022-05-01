@@ -11,6 +11,34 @@
                 "description": "Software Engineer",
                 "thumbnail": {
                     "path": "http://guilherme.jpg"
+                },
+                "comics": {
+                    "items": [
+                        {
+                            "name": "Bueno"
+                        }
+                    ]
+                },
+                "series": {
+                    "items": [
+                        {
+                            "name": "Bueno"
+                        }
+                    ]
+                },
+                "stories": {
+                    "items": [
+                        {
+                            "name": "Bueno"
+                        }
+                    ]
+                },
+                "events": {
+                    "items": [
+                        {
+                            "name": "Bueno"
+                        }
+                    ]
                 }
             }
         ]

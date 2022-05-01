@@ -33,14 +33,14 @@ class _NestedTabBarState extends State<NestedTabBar>
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
+      children: [
         TabBar(
           controller: _nestedTabController,
-          indicatorColor: Colors.teal,
-          labelColor: Colors.teal,
+          indicatorColor: Colors.grey[900],
+          labelColor: Colors.grey[900],
           unselectedLabelColor: Colors.black54,
           isScrollable: true,
           tabs: widget.tabs.keys.map((tab) => tab).toList(),

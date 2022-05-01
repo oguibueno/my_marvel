@@ -3,15 +3,22 @@
 import 'package:flutter/material.dart';
 
 class CharacterEvents extends StatelessWidget {
-  const CharacterEvents({Key? key}) : super(key: key);
+  const CharacterEvents(this.events);
+
+  final List<String> events;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
-        color: Colors.teal,
-      ),
+    return ListView(
+      children: events
+          .map(
+            (event) => Card(
+              child: ListTile(
+                title: Text(event),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 }
