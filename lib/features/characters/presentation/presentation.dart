@@ -1,2 +1,2 @@
-export 'characters/page/page.dart';
-export 'characters/bloc/bloc.dart';
+export 'characters/characters.dart';
+export 'widgets/widgets.dart';

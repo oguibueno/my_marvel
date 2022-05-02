@@ -2,11 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_marvel/features/characters/domain/entities/entities.dart';
 
-import 'package:my_marvel/features/characters/presentation/characters/bloc/bloc.dart';
-import 'package:my_marvel/features/characters/presentation/widgets/widgets.dart';
-import 'package:my_marvel/features/characters/presentation/characters/page/page.dart';
+import 'package:my_marvel/features/characters/domain/domain.dart';
+import 'package:my_marvel/features/characters/presentation/presentation.dart';
 
 class CharacterList extends StatefulWidget {
   @override

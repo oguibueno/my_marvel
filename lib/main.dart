@@ -2,40 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 import 'package:my_marvel/features/characters/presentation/presentation.dart';
-import 'package:my_marvel/features/characters/data/datasources/datasources.dart';
-import 'package:my_marvel/features/characters/data/repositories/repositories.dart';
 import 'package:my_marvel/features/characters/domain/usecases/usecases.dart';
 
-import 'package:http/http.dart' as http;
+import 'package:my_marvel/startup.dart' as startup;
 
 void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        Provider(
-          create: (_) => GetCharacters(
-            CharacterRepositoryImpl(
-              remoteDataSource: RemoteDataSourceImpl(
-                client: http.Client(),
-              ),
-            ),
-          ),
-        ),
-      ],
-      child: App(),
-    ),
-  );
+  startup.init();
+  runApp(App());
 }
 
 class App extends MaterialApp {
   App()
       : super(
           home: BlocProvider(
-            create: (context) => CharacterBloc(
-              context.read<GetCharacters>(),
+            create: (_) => CharacterBloc(
+              startup.getIt<GetCharacters>(),
             )..add(CharacterFetched()),
             child: CharacterPage(),
           ),
