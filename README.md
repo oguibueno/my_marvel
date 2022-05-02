@@ -1,16 +1,22 @@
-# my_marvel
+# My Marvel
 
-A new Flutter project.
+My Marvel is an app that consumes the [Marvel API](https://developer.marvel.com/)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- Execute: flutter pub get
 
-A few resources to get you started if this is your first Flutter project:
+To be able to make requests to the Marvel API, you will need:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Create an account at https://developer.marvel.com/account
+- Get your credentials at My Developer Account menu
+- Create a string with the following: [timestamp][private key][public key]
+- Go to http://www.md5.cz/ and create a md5
+- Open `lib/features/characters/data/common/constants.dart` and edit the following:
+    - timeStamp = 'string you created'
+    - apikey = 'marvel public key'
+    - hash = 'md5 you created'
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Clean Architecture
+
+![Architecture](architecture.png)
