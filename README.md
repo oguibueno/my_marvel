@@ -1,5 +1,7 @@
 # My Marvel
 
+<a href="https://github.com/oguibueno/my_marvel/actions"><img src="https://github.com/oguibueno/my_marvel/workflows/marvel-app-test/badge.svg" alt="Test Status"></a>
+
 My Marvel is an app that consumes the [Marvel API](https://developer.marvel.com/)
 
 ## Getting Started
