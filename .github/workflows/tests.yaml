@@ -36,15 +36,6 @@ jobs:
         with:
           name: code-coverage
           path: coverage
-      - name: Report code coverage
-        uses: dethereum/github-actions-report-lcov@v1.0.0
+        uses: andybelltree/lcov-reporter-action@v1.4.0
         with:
-          coverage-files: coverage/lcov.info
-          minimum-coverage: 20
-          artifact-name: code-coverage-report
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: HTML Preview
-        id: html_preview
-        uses: pavi2410/html-preview-action@v2
-        with:
-          html_file: 'code-coverage-report/index.html'
+          lcov-file: ./coverage/lcov.info
